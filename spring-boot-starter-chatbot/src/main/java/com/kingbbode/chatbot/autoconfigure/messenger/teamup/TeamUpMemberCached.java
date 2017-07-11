@@ -1,7 +1,6 @@
 package com.kingbbode.chatbot.autoconfigure.messenger.teamup;
 
 import com.kingbbode.chatbot.autoconfigure.messenger.teamup.response.OrganigrammeResponse;
-import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;

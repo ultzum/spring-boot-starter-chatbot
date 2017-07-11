@@ -9,7 +9,7 @@ import java.lang.reflect.InvocationTargetException;
 /**
  * Created by YG on 2017-01-26.
  */
-public abstract class AbstractBrainCell implements BrainCell{
+public abstract class AbstractBrainCell implements BrainCell {
     @Override
     public String explain() {
         return "";

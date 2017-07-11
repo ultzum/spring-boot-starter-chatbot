@@ -1,9 +1,9 @@
 package com.kingbbode.chatbot.autoconfigure.brain.cell;
 
+import com.kingbbode.chatbot.autoconfigure.common.enums.BrainResponseType;
 import com.kingbbode.chatbot.autoconfigure.common.exception.ArgumentInvalidException;
 import com.kingbbode.chatbot.autoconfigure.common.exception.BrainException;
 import com.kingbbode.chatbot.autoconfigure.common.exception.InvalidReturnTypeException;
-import com.kingbbode.chatbot.autoconfigure.common.enums.BrainResponseType;
 import com.kingbbode.chatbot.autoconfigure.common.request.BrainRequest;
 import com.kingbbode.chatbot.autoconfigure.common.result.BrainCellResult;
 import com.kingbbode.chatbot.autoconfigure.common.result.BrainResult;

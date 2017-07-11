@@ -5,7 +5,6 @@ import com.kingbbode.chatbot.autoconfigure.messenger.teamup.response.Organigramm
 import com.kingbbode.chatbot.autoconfigure.messenger.teamup.response.RoomInfoResponse;
 import com.kingbbode.chatbot.autoconfigure.messenger.teamup.templates.template.AuthTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
@@ -45,6 +44,7 @@ public class TeamUpMemberService implements MemberService {
         return memberCached.containsMember(Long.valueOf(memberId));
     }
 
+    @Override
     public RoomInfoResponse getRoomInfo(String room) {
         return authTemplate.getMembersInRoom(room);
     }

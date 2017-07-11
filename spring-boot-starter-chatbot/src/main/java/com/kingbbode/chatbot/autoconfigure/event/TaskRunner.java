@@ -7,6 +7,8 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+
 /**
  * Created by YG on 2016-08-17.
  */
@@ -15,7 +17,7 @@ import org.springframework.stereotype.Service;
 @ConditionalOnProperty(prefix = "chatbot", name = "enabled", havingValue = "true")
 public class TaskRunner {
     
-    @Autowired
+    @Resource(name = "eventQueueTreadPool")
     private ThreadPoolTaskExecutor executer;
 
     @Autowired

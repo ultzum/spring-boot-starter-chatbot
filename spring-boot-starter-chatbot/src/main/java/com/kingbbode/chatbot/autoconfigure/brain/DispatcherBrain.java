@@ -1,16 +1,15 @@
 package com.kingbbode.chatbot.autoconfigure.brain;
 
 import com.kingbbode.chatbot.autoconfigure.brain.cell.AbstractBrainCell;
-import com.kingbbode.chatbot.autoconfigure.conversation.Conversation;
-import com.kingbbode.chatbot.autoconfigure.conversation.ConversationService;
 import com.kingbbode.chatbot.autoconfigure.brain.factory.BrainFactory;
 import com.kingbbode.chatbot.autoconfigure.common.enums.BrainResponseType;
 import com.kingbbode.chatbot.autoconfigure.common.request.BrainRequest;
 import com.kingbbode.chatbot.autoconfigure.common.result.BrainResult;
+import com.kingbbode.chatbot.autoconfigure.conversation.Conversation;
+import com.kingbbode.chatbot.autoconfigure.conversation.ConversationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;

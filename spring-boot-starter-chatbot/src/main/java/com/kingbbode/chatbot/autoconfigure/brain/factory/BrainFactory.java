@@ -1,13 +1,13 @@
 package com.kingbbode.chatbot.autoconfigure.brain.factory;
 
 import com.kingbbode.chatbot.autoconfigure.ChatbotProperties;
+import com.kingbbode.chatbot.autoconfigure.base.emoticon.component.EmoticonComponent;
+import com.kingbbode.chatbot.autoconfigure.base.knowledge.component.KnowledgeComponent;
 import com.kingbbode.chatbot.autoconfigure.brain.cell.*;
 import com.kingbbode.chatbot.autoconfigure.common.annotations.Brain;
 import com.kingbbode.chatbot.autoconfigure.common.annotations.BrainCell;
-import com.kingbbode.chatbot.autoconfigure.base.emoticon.component.EmoticonComponent;
-import com.kingbbode.chatbot.autoconfigure.base.knowledge.component.KnowledgeComponent;
-import com.kingbbode.chatbot.autoconfigure.common.properties.BotProperties;
 import com.kingbbode.chatbot.autoconfigure.common.enums.BrainRequestType;
+import com.kingbbode.chatbot.autoconfigure.common.properties.BotProperties;
 import org.apache.commons.lang3.text.WordUtils;
 import org.reflections.Reflections;
 import org.reflections.scanners.SubTypesScanner;
@@ -18,7 +18,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;

@@ -1,11 +1,10 @@
 package com.kingbbode.chatbot.autoconfigure.base.knowledge.brain;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.kingbbode.chatbot.autoconfigure.base.emoticon.component.EmoticonComponent;
+import com.kingbbode.chatbot.autoconfigure.base.knowledge.component.KnowledgeComponent;
 import com.kingbbode.chatbot.autoconfigure.common.annotations.Brain;
 import com.kingbbode.chatbot.autoconfigure.common.annotations.BrainCell;
 import com.kingbbode.chatbot.autoconfigure.common.exception.ArgumentInvalidException;
-import com.kingbbode.chatbot.autoconfigure.base.knowledge.component.KnowledgeComponent;
 import com.kingbbode.chatbot.autoconfigure.common.request.BrainRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

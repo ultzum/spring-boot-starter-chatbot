@@ -1,5 +1,6 @@
 package com.kingbbode.chatbot.autoconfigure;
 
+import com.kingbbode.chatbot.autoconfigure.common.interfaces.MemberService;
 import com.kingbbode.chatbot.autoconfigure.messenger.teamup.*;
 import com.kingbbode.chatbot.autoconfigure.messenger.teamup.message.MessageService;
 import com.kingbbode.chatbot.autoconfigure.messenger.teamup.templates.template.*;
@@ -19,25 +20,25 @@ public class TeamUpAutoConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    TeamUpEventSensor teamUpEventSensor(){
+    public TeamUpEventSensor teamUpEventSensor(){
         return new TeamUpEventSensor();
     }
 
     @Bean
     @ConditionalOnMissingBean
-    TeamUpTokenManager teamUpTokenManager(){
+    public TeamUpTokenManager teamUpTokenManager(){
         return new TeamUpTokenManager();
     }
 
     @Bean
     @ConditionalOnMissingBean
-    TeamUpDispatcher teamUpDispatcher(){
+    public TeamUpDispatcher teamUpDispatcher(){
         return new TeamUpDispatcher();
     }
 
     @Bean
     @ConditionalOnMissingBean
-    MessageService messageService(){
+    public MessageService messageService(){
         return new MessageService();
     }
 
@@ -70,15 +71,16 @@ public class TeamUpAutoConfiguration {
     public FileTemplate fileTemplate(){
         return new FileTemplate();
     }
+    
     @Bean
     @ConditionalOnMissingBean
-    TeamUpMemberCached teamUpMemberCached(){
+    public TeamUpMemberCached teamUpMemberCached(){
         return new TeamUpMemberCached();
     }
 
-    @Bean
+    @Bean(name = "teamUpMemberService")
     @ConditionalOnMissingBean
-    TeamUpMemberService teamUpMemberService(){
+    public MemberService teamUpMemberService(){
         return new TeamUpMemberService();
     }
 }

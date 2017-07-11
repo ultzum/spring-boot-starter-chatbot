@@ -3,11 +3,10 @@ package com.kingbbode.chatbot.autoconfigure.base.knowledge.component;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.kingbbode.chatbot.autoconfigure.common.properties.BotProperties;
 import com.kingbbode.chatbot.autoconfigure.base.stat.StatComponent;
+import com.kingbbode.chatbot.autoconfigure.common.properties.BotProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.HashOperations;
-import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;

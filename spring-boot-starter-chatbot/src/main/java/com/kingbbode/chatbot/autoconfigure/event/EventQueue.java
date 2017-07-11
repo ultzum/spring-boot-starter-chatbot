@@ -1,7 +1,5 @@
 package com.kingbbode.chatbot.autoconfigure.event;
 
-import org.springframework.stereotype.Component;
-
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 

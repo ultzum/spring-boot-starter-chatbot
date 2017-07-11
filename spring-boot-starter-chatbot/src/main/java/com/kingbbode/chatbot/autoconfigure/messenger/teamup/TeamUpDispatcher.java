@@ -1,23 +1,22 @@
 package com.kingbbode.chatbot.autoconfigure.messenger.teamup;
 
-import com.kingbbode.chatbot.autoconfigure.brain.DispatcherBrain;
-import com.kingbbode.chatbot.autoconfigure.conversation.Conversation;
-import com.kingbbode.chatbot.autoconfigure.conversation.ConversationService;
 import com.kingbbode.chatbot.autoconfigure.base.emoticon.component.EmoticonComponent;
+import com.kingbbode.chatbot.autoconfigure.brain.DispatcherBrain;
 import com.kingbbode.chatbot.autoconfigure.common.enums.BrainResponseType;
 import com.kingbbode.chatbot.autoconfigure.common.interfaces.Dispatcher;
 import com.kingbbode.chatbot.autoconfigure.common.request.BrainRequest;
 import com.kingbbode.chatbot.autoconfigure.common.result.BrainResult;
-import com.kingbbode.chatbot.autoconfigure.messenger.teamup.util.ImagesUtils;
+import com.kingbbode.chatbot.autoconfigure.conversation.Conversation;
+import com.kingbbode.chatbot.autoconfigure.conversation.ConversationService;
 import com.kingbbode.chatbot.autoconfigure.messenger.teamup.message.MessageService;
 import com.kingbbode.chatbot.autoconfigure.messenger.teamup.request.FileRequest;
 import com.kingbbode.chatbot.autoconfigure.messenger.teamup.response.EventResponse;
 import com.kingbbode.chatbot.autoconfigure.messenger.teamup.response.FileUploadResponse;
 import com.kingbbode.chatbot.autoconfigure.messenger.teamup.response.MessageResponse;
+import com.kingbbode.chatbot.autoconfigure.messenger.teamup.util.ImagesUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 

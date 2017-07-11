@@ -1,26 +1,22 @@
 package com.kingbbode.chatbot.autoconfigure.base;
 
-import com.kingbbode.chatbot.autoconfigure.common.annotations.Brain;
-import com.kingbbode.chatbot.autoconfigure.common.annotations.BrainCell;
-import com.kingbbode.chatbot.autoconfigure.brain.cell.ApiBrainCell;
-import com.kingbbode.chatbot.autoconfigure.brain.cell.CommonBrainCell;
 import com.kingbbode.chatbot.autoconfigure.base.emoticon.component.EmoticonComponent;
-import com.kingbbode.chatbot.autoconfigure.brain.factory.BrainFactory;
 import com.kingbbode.chatbot.autoconfigure.base.knowledge.component.KnowledgeComponent;
 import com.kingbbode.chatbot.autoconfigure.base.stat.StatComponent;
+import com.kingbbode.chatbot.autoconfigure.brain.cell.ApiBrainCell;
+import com.kingbbode.chatbot.autoconfigure.brain.cell.CommonBrainCell;
+import com.kingbbode.chatbot.autoconfigure.brain.factory.BrainFactory;
+import com.kingbbode.chatbot.autoconfigure.common.annotations.Brain;
+import com.kingbbode.chatbot.autoconfigure.common.annotations.BrainCell;
 import com.kingbbode.chatbot.autoconfigure.common.enums.BrainResponseType;
 import com.kingbbode.chatbot.autoconfigure.common.request.BrainRequest;
 import com.kingbbode.chatbot.autoconfigure.common.util.BrainUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 
 /**
  * Created by YG-MAC on 2017. 1. 27..
  */
 @Brain
-@ConditionalOnBean(BrainFactory.class)
-@ConditionalOnProperty(prefix = "chatbot", name = "enableBase", havingValue = "true")
 public class BaseBrain {
 
     @Autowired

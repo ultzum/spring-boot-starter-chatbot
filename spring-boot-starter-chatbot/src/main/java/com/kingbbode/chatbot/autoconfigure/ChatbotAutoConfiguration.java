@@ -1,10 +1,9 @@
 package com.kingbbode.chatbot.autoconfigure;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.joda.JodaModule;
+import com.kingbbode.chatbot.autoconfigure.base.BaseBrain;
+import com.kingbbode.chatbot.autoconfigure.base.emoticon.brain.EmoticonBrain;
 import com.kingbbode.chatbot.autoconfigure.base.emoticon.component.EmoticonComponent;
+import com.kingbbode.chatbot.autoconfigure.base.knowledge.brain.KnowledgeBrain;
 import com.kingbbode.chatbot.autoconfigure.base.knowledge.component.KnowledgeComponent;
 import com.kingbbode.chatbot.autoconfigure.base.stat.StatComponent;
 import com.kingbbode.chatbot.autoconfigure.brain.DispatcherBrain;
@@ -19,7 +18,10 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
@@ -68,7 +70,6 @@ public class ChatbotAutoConfiguration {
     }
 
     @Bean(name = "messageRestOperations")
-    @ConditionalOnMissingBean
     public RestOperations messageRestOperations() {
         HttpComponentsClientHttpRequestFactory factory = new HttpComponentsClientHttpRequestFactory();
         factory.setConnectTimeout(1000);
@@ -94,9 +95,8 @@ public class ChatbotAutoConfiguration {
         return getRestOperations(factory);
     }
 
-    @Bean
-    @ConditionalOnMissingBean
-    public ThreadPoolTaskExecutor threadPoolTaskExecutorDefault() {
+    @Bean(name = "eventQueueTreadPool")
+    public ThreadPoolTaskExecutor eventQueueTreadPool() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         executor.setCorePoolSize(5);
         executor.setMaxPoolSize(10);
@@ -105,6 +105,26 @@ public class ChatbotAutoConfiguration {
         return executor;
     }
 
+    @Bean
+    @ConditionalOnMissingBean
+    public TaskRunner taskRunner(){
+        return new TaskRunner();
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    @ConditionalOnProperty(prefix = "chatbot", name = "enableBase", havingValue = "true")
+    public BaseBrain baseBrain(){
+        return new BaseBrain();
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    @ConditionalOnProperty(prefix = "chatbot", name = "enableEmoticon", havingValue = "true")
+    public EmoticonBrain emoticonBrain(){
+        return new EmoticonBrain();
+    }
+    
     @Bean    
     @ConditionalOnMissingBean
     @ConditionalOnProperty(prefix = "chatbot", name = "enableEmoticon", havingValue = "true")
@@ -112,6 +132,13 @@ public class ChatbotAutoConfiguration {
         return new EmoticonComponent();
     }
 
+    @Bean
+    @ConditionalOnMissingBean    
+    @ConditionalOnProperty(prefix = "chatbot", name = "enableKnowledge", havingValue = "true")
+    public KnowledgeBrain knowledgeBrain(){
+        return new KnowledgeBrain();
+    }
+    
     @Bean
     @ConditionalOnMissingBean
     @ConditionalOnProperty(prefix = "chatbot", name = "enableKnowledge", havingValue = "true")

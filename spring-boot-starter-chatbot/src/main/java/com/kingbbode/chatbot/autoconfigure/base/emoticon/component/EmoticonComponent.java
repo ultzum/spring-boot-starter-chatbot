@@ -3,7 +3,6 @@ package com.kingbbode.chatbot.autoconfigure.base.emoticon.component;
 import com.kingbbode.chatbot.autoconfigure.base.stat.StatComponent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.HashOperations;
-import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;

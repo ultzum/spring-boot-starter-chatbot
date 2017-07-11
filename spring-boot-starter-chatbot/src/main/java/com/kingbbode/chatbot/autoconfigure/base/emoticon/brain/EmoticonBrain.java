@@ -1,9 +1,8 @@
 package com.kingbbode.chatbot.autoconfigure.base.emoticon.brain;
 
-import com.kingbbode.chatbot.autoconfigure.brain.factory.BrainFactory;
+import com.kingbbode.chatbot.autoconfigure.base.emoticon.component.EmoticonComponent;
 import com.kingbbode.chatbot.autoconfigure.common.annotations.Brain;
 import com.kingbbode.chatbot.autoconfigure.common.annotations.BrainCell;
-import com.kingbbode.chatbot.autoconfigure.base.emoticon.component.EmoticonComponent;
 import com.kingbbode.chatbot.autoconfigure.common.exception.BrainException;
 import com.kingbbode.chatbot.autoconfigure.common.request.BrainRequest;
 import org.springframework.beans.factory.annotation.Autowired;

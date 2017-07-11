@@ -11,7 +11,7 @@ import java.util.Random;
 /**
  * Created by YG on 2017-01-26.
  */
-public class KnowledgeBrainCell extends AbstractBrainCell{
+public class KnowledgeBrainCell extends AbstractBrainCell {
     private KnowledgeComponent knowledgeComponent;
 
     public KnowledgeBrainCell(KnowledgeComponent knowledgeComponent) {
