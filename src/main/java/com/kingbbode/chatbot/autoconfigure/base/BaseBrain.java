@@ -33,12 +33,7 @@ public class BaseBrain {
 
     @BrainCell(key = "기능", explain = "기능 목록 출력", example = "#기능", function = "function")
     public String explain(BrainRequest brainRequest) {
-        return "울트론 v4.5.0 \n" +
-                "!픽미(랜덤으로 방에서 한명 뽑기) 기능을 조정훈 담당님께서 추가해주셨습니다..\n" + 
-                "!학습 기능 버그가 수정되었습니다..\n" +
-                "!나가 기능이 추가되었습니다..\n" +
-                "!버그 제보는 포털개발팀 권용근 담당에게 부탁드립니다!\n\n" +
-                "**** 기능 목록 **** \n" +
+        return  "**** 기능 목록 **** \n" +
                 BrainUtil.explainDetail(brainFactory.findBrainCellByType(CommonBrainCell.class)) +
                 "\n**** API 기능 목록 **** \n" +
                 BrainUtil.explainDetail(brainFactory.findBrainCellByType(ApiBrainCell.class)) +
