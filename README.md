@@ -4,6 +4,8 @@
 
 **https://github.com/kingbbode/chatbot-framework 에서 이전되었음.**
 
+*Document 는 최하단 작성*
+
 ## 왜 개발하는가?
 
 - 만들고 있는 Chat Bot을 알아가고 있는 지식을 적용한 리펙토링 및 라이브러리화 하고 싶어서
@@ -57,3 +59,66 @@
 
 ![현재!](./images/cf4.png)
 
+---
+
+## Document
+
+### application.properties
+
+```java
+# CHAT-BOT
+chatbot.basePackage = com.kingbbode.example
+chatbot.enabled = true
+chatbot.enableBase = true
+chatbot.enableEmoticon = true
+chatbot.enableKnowledge = true
+# TEAMUP
+chatbot.teamup.enabled = true
+chatbot.teamup.id = {아이디}
+chatbot.teamup.password = {비밀번호}
+chatbot.teamup.clientId = {clientId}
+chatbot.teamup.clientSecret = {clientSecret}
+chatbot.teamup.testRoom = {DEV 모드 테스트 방 번호}
+chatbot.teamup.testFeed = {DEV 모드 테스트 피드 번호}
+```
+
+**Core**
+
+- chatbot.basePackage : Root Package 를 지정
+- chatbot.enabled : {true or false} 챗봇 사용 여부 
+- chatbot.enableBase = {true or false} Base Brain 사용 여부(base Brain 에는 기능 목록을 출력하는 기능이 작성되어 있음)
+- chatbot.enableEmoticon = {true or false} Emoticon Brain 사용 여부(emoticon Brain 에는 @를 prefix로 받아 이모티콘을 처리하기 위한 기능이 작성되어 있음, 이모티콘을 저장하는 형태는 구현 프로젝트에서 작성해야 함)
+- chatbot.enableKnowledge = {true or false} Knowledge Brain 사용 여부( knowledge Brain 에는 학습 기능이 작성되어 있음)
+
+**메신저 TEAMUP**
+  
+- chatbot.teamup.enabled = {true or false} (사용 여부)
+- chatbot.teamup.id = {아이디}
+- chatbot.teamup.password = {비밀번호}
+- chatbot.teamup.clientId = {clientId}
+- chatbot.teamup.clientSecret = {clientSecret}
+- chatbot.teamup.testRoom = {DEV 모드 테스트 방 번호}
+- chatbot.teamup.testFeed = {DEV 모드 테스트 피드 번호} 
+
+### 주의사항
+
+대화형(이전 대화와 연결되는 형태)을 완성시키기 위해 대화 상태를 저장하는 저장소를 `REDIS` 로 사용.
+
+그래서 이 Spring Boot Starter 를 사용하기 위해서는 `JedisConnectionFactory` 를 반드시 생성해주어야 합니다.
+
+```java
+@Bean
+    public JedisConnectionFactory jedisConnectionFactory() {
+        JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory();
+        jedisConnectionFactory.setHostName("xxx.xxx.xxx.xxx");
+        jedisConnectionFactory.setPort(6379);
+        jedisConnectionFactory.setTimeout(0);
+        jedisConnectionFactory.setUsePool(true);
+        
+        return jedisConnectionFactory;
+    }
+```
+
+### Example Project
+
+[Spring Boot Starter Chatbot Example](https://github.com/kingbbode/spring-boot-starter-chatbot-example)
