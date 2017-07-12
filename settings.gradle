@@ -1,3 +1,0 @@
-rootProject.name = 'spring-boot-chatbot-multimodule'
-include 'spring-boot-starter-chatbot'
-include 'spring-boot-starter-chatbot-example'
