@@ -53,12 +53,7 @@ public class ChatbotAutoConfiguration {
         return new BrainFactory();
     }
     
-    @Bean
-    @ConditionalOnMissingBean
-    @ConditionalOnBean(JedisConnectionFactory.class)
-    public ConversationService conversationService(){
-        return new ConversationService();
-    }
+    
 
     @Bean
     @ConditionalOnMissingBean
@@ -85,11 +80,16 @@ public class ChatbotAutoConfiguration {
     
     @Bean
     @ConditionalOnMissingBean
-    @ConditionalOnBean(JedisConnectionFactory.class)
     public StringRedisTemplate redisTemplate(JedisConnectionFactory jedisConnectionFactory) {
         StringRedisTemplate stringRedisTemplate = new StringRedisTemplate();
         stringRedisTemplate.setConnectionFactory(jedisConnectionFactory);
         return stringRedisTemplate;
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public ConversationService conversationService(){
+        return new ConversationService();
     }
 
     @Bean(name = "messageRestOperations")
