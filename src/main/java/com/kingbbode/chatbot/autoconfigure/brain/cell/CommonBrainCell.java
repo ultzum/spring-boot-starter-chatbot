@@ -49,38 +49,38 @@ public class CommonBrainCell extends AbstractBrainCell{
             result = active.invoke(object, brainRequest);
         }catch(Throwable e){
             if(e.getCause() instanceof BrainException){
-                return new BrainResult.Builder()
+                return BrainResult.builder()
                         .message(e.getCause().getMessage())
                         .room(brainRequest.getRoom())
                         .type(BrainResponseType.MESSAGE)
                         .build();
             }else if(e.getCause() instanceof ArgumentInvalidException){
-                return new BrainResult.Builder()
+                return BrainResult.builder()
                         .message(active.getAnnotation(com.kingbbode.chatbot.autoconfigure.common.annotations.BrainCell.class).example())
                         .room(brainRequest.getRoom())
                         .type(BrainResponseType.MESSAGE)
                         .build();
             }else if(e.getCause() instanceof InvalidReturnTypeException){
-                return new BrainResult.Builder()
+                return BrainResult.builder()
                         .message("Method Return Type Exception!")
                         .room(brainRequest.getRoom())
                         .type(BrainResponseType.MESSAGE)
                         .build();
             }
-            return new BrainResult.Builder()
+            return BrainResult.builder()
                     .message("Server Error : " + e.getMessage())
                     .room(brainRequest.getRoom())
                     .type(BrainResponseType.MESSAGE)
                     .build();
         }
         if(result instanceof BrainCellResult){
-            return new BrainResult.Builder()
+            return BrainResult.builder()
                     .result((BrainCellResult) result)
                     .type(brain.type())
                     .build();
         }        
         
-        return new BrainResult.Builder()
+        return BrainResult.builder()
                 .message((String) result)
                 .room(brainRequest.getRoom())
                 .type(brain.type())

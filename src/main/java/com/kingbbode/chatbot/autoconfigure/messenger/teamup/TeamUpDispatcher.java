@@ -90,7 +90,7 @@ public class TeamUpDispatcher implements Dispatcher<EventResponse.Event> {
                         );
                         if(response == null || response.getFiles() == null || response.getFiles().size()<1){
                             conversationService.delete(String.valueOf(message.getUser()));
-                            send(new BrainResult.Builder()
+                            send(BrainResult.builder()
                                     .message("문제가 있네요.. 다음에 이용해주세요..ㅜㅜ")
                                     .room(event.getChat().getRoom())
                                     .type(BrainResponseType.MESSAGE)
@@ -100,7 +100,7 @@ public class TeamUpDispatcher implements Dispatcher<EventResponse.Event> {
                         emoticonComponent.put(conversation.getParam().get("name"), response.getFiles().get(0).getId());
                         logger.info("emoticon reg - user : {}, emoticon: {}", message.getUser(), conversation.getParam().get("name"));
                         conversationService.delete(String.valueOf(message.getUser()));
-                        send(new BrainResult.Builder()
+                        send(BrainResult.builder()
                                 .message(conversation.getParam().get("name") + " 이모티콘이 등록되었습니다.")
                                 .room(event.getChat().getRoom())
                                 .type(BrainResponseType.MESSAGE)

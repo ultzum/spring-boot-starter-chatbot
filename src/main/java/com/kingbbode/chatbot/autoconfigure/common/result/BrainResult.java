@@ -7,6 +7,8 @@ import org.apache.commons.lang3.StringUtils;
  * Created by YG on 2017-01-26.
  */
 public class BrainResult {
+    public static BrainResult NONE = builder().type(BrainResponseType.NONE).build();
+
     private BrainResponseType type;
     private String message;
     private String room;
@@ -29,6 +31,10 @@ public class BrainResult {
         return room;
     }
 
+    public static Builder builder() {
+        return new Builder();
+    }
+
     public static class Builder {
         private BrainResponseType type;
         private String message;
@@ -37,7 +43,7 @@ public class BrainResult {
         public Builder(){
             this.type = BrainResponseType.MESSAGE;
         }
-        
+
         public Builder result(BrainCellResult result){
             this.message(result.getMessage());
             if(!StringUtils.isEmpty(result.getRoom())) {
@@ -73,5 +79,4 @@ public class BrainResult {
                 .message("안녕하세요. 포털개발팀 반려봇 울트론입니다!. \n '#기능'을 참고하세요");
     }
 
-    public static BrainResult NONE = new Builder().type(BrainResponseType.NONE).build();
 }

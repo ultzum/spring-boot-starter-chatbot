@@ -37,14 +37,14 @@ public class BotRestController {
         }else{
             if("message".equals(type)){
                 messageService.sendMessage(
-                        new BrainResult.Builder()
+                        BrainResult.builder()
                             .message(message)
                             .room(room)
                             .build()
                 );
             }else if("feed".equals(type)){
                 messageService.writeFeed(
-                        new BrainResult.Builder()
+                        BrainResult.builder()
                             .message(message)
                             .room(room)
                             .build()

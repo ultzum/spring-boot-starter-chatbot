@@ -56,7 +56,7 @@ public class DispatcherBrain {
             return (T) new AbstractBrainCell(){
                 @Override
                 public BrainResult execute(BrainRequest brainRequest) throws InvocationTargetException, IllegalAccessException {
-                    return new BrainResult.Builder()
+                    return BrainResult.builder()
                             .message("취소되었습니다.")
                             .room(brainRequest.getRoom())
                             .type(BrainResponseType.MESSAGE)
@@ -67,7 +67,7 @@ public class DispatcherBrain {
         return (T) new AbstractBrainCell(){
             @Override
             public BrainResult execute(BrainRequest brainRequest) throws InvocationTargetException, IllegalAccessException {
-                return new BrainResult.Builder()
+                return BrainResult.builder()
                         .message(info.example())
                         .room(brainRequest.getRoom())
                         .type(BrainResponseType.MESSAGE)

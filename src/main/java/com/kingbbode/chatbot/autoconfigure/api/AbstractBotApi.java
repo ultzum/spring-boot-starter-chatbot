@@ -12,7 +12,7 @@ public abstract class AbstractBotApi<T extends ApiData> implements BotApi<T> {
     public BrainResult execute(BrainRequest brainRequest) {
         T api = getRequest(brainRequest.getContent());
 
-        return new BrainResult.Builder()
+        return BrainResult.builder()
                 .room(brainRequest.getRoom())
                 .result(get(api))
                 .type(api.response())

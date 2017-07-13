@@ -15,7 +15,7 @@ public class EmoticonBrainCell extends AbstractBrainCell{
     private EmoticonComponent emoticonComponent;
 /*
     public EmoticonBrainCell(String emoticon) {
-        this.builder = new BrainResult.Builder()
+        this.builder = BrainResult.builder()
                 .message(emoticon);
     }*/
 
@@ -29,10 +29,12 @@ public class EmoticonBrainCell extends AbstractBrainCell{
         if(result == null){
             return BrainResult.NONE;
         }
-        return new BrainResult.Builder()
+        return BrainResult.builder()
                 .message(result)
                 .room(brainRequest.getRoom())
                 .type(BrainResponseType.EMOTICON)
                 .build();
+
+
     }
 }
