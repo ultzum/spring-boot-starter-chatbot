@@ -41,6 +41,12 @@ import static com.kingbbode.chatbot.autoconfigure.common.util.RestTemplateFactor
 @Import(TeamUpAutoConfiguration.class)
 public class ChatbotAutoConfiguration {
     
+    private ChatbotProperties chatbotProperties;
+
+    public ChatbotAutoConfiguration(ChatbotProperties chatbotProperties) {
+        this.chatbotProperties = chatbotProperties;
+    }
+
     @Bean
     @ConditionalOnMissingBean
     public BrainFactory brainFactory(){
@@ -58,6 +64,23 @@ public class ChatbotAutoConfiguration {
     @ConditionalOnMissingBean
     public EventQueue eventQueue(){
         return new EventQueue();
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public JedisConnectionFactory jedisConnectionFactory() {
+        JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory();
+        jedisConnectionFactory.setHostName(chatbotProperties.getHostName());
+        jedisConnectionFactory.setPort(chatbotProperties.getPort());
+        jedisConnectionFactory.setTimeout(chatbotProperties.getTimeout());
+        jedisConnectionFactory.setPassword(chatbotProperties.getPassword());
+        jedisConnectionFactory.setUsePool(chatbotProperties.isUsePool());
+        jedisConnectionFactory.setUseSsl(chatbotProperties.isUseSsl());
+        jedisConnectionFactory.setDatabase(chatbotProperties.getDbIndex());
+        jedisConnectionFactory.setClientName(chatbotProperties.getClientName());
+        jedisConnectionFactory.setConvertPipelineAndTxResults(chatbotProperties.isConvertPipelineAndTxResults());
+
+        return jedisConnectionFactory;
     }
     
     @Bean
@@ -175,4 +198,6 @@ public class ChatbotAutoConfiguration {
     public BrainCellAspect brainCellAspect(){
         return new BrainCellAspect();
     }
+    
+    
 }
