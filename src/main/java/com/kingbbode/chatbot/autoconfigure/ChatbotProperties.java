@@ -1,12 +1,9 @@
 package com.kingbbode.chatbot.autoconfigure;
 
-import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisPoolConfig;
-import redis.clients.jedis.JedisShardInfo;
+
+import lombok.Data;
 import redis.clients.jedis.Protocol;
-import redis.clients.util.Pool;
 
 /**
  * Created by YG on 2017-07-10.

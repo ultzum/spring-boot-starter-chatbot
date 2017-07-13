@@ -24,7 +24,6 @@ repositories {
 
 
 dependencies {
-	compile("org.springframework.boot:spring-boot-starter")
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.boot:spring-boot-starter-aop')
 	compile("org.springframework.boot:spring-boot-starter-data-redis")
@@ -32,7 +31,7 @@ dependencies {
 	compile('org.reflections:reflections:0.9.10')
 	compile('joda-time:joda-time:2.9.3')
 	compile("com.fasterxml.jackson.datatype:jackson-datatype-joda:2.4.0")
-	compile("org.projectlombok:lombok:1.16.16")
+	compileOnly("org.projectlombok:lombok:1.16.16")
 	compile("org.apache.httpcomponents:httpclient:4.5.3")
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
