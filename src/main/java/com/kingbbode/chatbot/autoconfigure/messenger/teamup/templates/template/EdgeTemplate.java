@@ -4,8 +4,10 @@ import com.kingbbode.chatbot.autoconfigure.TeamUpProperties;
 import com.kingbbode.chatbot.autoconfigure.common.properties.BotProperties;
 import com.kingbbode.chatbot.autoconfigure.messenger.teamup.Api;
 import com.kingbbode.chatbot.autoconfigure.messenger.teamup.request.MessageRequest;
+import com.kingbbode.chatbot.autoconfigure.messenger.teamup.request.RoomCreateRequest;
 import com.kingbbode.chatbot.autoconfigure.messenger.teamup.response.FeedGroupsResponse;
 import com.kingbbode.chatbot.autoconfigure.messenger.teamup.response.MessageResponse;
+import com.kingbbode.chatbot.autoconfigure.messenger.teamup.response.RoomCreateResponse;
 import com.kingbbode.chatbot.autoconfigure.messenger.teamup.templates.BaseTemplate;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +56,13 @@ public class EdgeTemplate extends BaseTemplate {
     }
 
     @Async
+    public RoomCreateResponse openRoom(int... userIds) {
+        ParameterizedTypeReference<RoomCreateResponse> p = new ParameterizedTypeReference<RoomCreateResponse>() {
+        };
+        return post(Api.ROOM.getUrl() + "/1", new RoomCreateRequest(botProperties.isTestMode()?new int[]{Integer.parseInt(teamUpProperties.getTestUser())}:userIds), p);
+    }
+
+    @Async
     public void writeFeed(String message, String room) {
         ParameterizedTypeReference<MessageResponse> p = new ParameterizedTypeReference<MessageResponse>() {
         };
@@ -69,7 +78,6 @@ public class EdgeTemplate extends BaseTemplate {
         }
     }
     
-    @Async
     public void outRoom(String room) {
         if(!room.equals("999999999999") && !StringUtils.isEmpty(room)) {
             ParameterizedTypeReference<MessageResponse> p = new ParameterizedTypeReference<MessageResponse>() {
