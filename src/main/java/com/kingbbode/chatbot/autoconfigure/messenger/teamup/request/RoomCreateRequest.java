@@ -1,0 +1,12 @@
+package com.kingbbode.chatbot.autoconfigure.messenger.teamup.request;
+
+/**
+ * Created by YG on 2017-07-21.
+ */
+public class RoomCreateRequest {
+    public RoomCreateRequest(int[] users) {
+        this.users = users;
+    }
+
+    private int[] users;
+}

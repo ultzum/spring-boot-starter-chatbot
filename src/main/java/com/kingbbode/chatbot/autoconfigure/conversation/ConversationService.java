@@ -1,5 +1,6 @@
 package com.kingbbode.chatbot.autoconfigure.conversation;
 
+import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kingbbode.chatbot.autoconfigure.common.properties.BotProperties;
@@ -53,6 +54,10 @@ public class ConversationService {
     
     public void push(String userId, Conversation value) throws JsonProcessingException {
         listOperations.rightPush(PREFIX+userId, objectMapper.writeValueAsString(value));
+        this.touch(userId);
+    }
+    
+    public void touch(String userId) {
         redisTemplate.expireAt(PREFIX+userId, new DateTime().plusSeconds(expireTime).toDate());
     }
     
