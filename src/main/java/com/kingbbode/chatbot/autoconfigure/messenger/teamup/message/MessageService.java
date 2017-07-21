@@ -5,6 +5,7 @@ import com.kingbbode.chatbot.autoconfigure.messenger.teamup.request.FileRequest;
 import com.kingbbode.chatbot.autoconfigure.messenger.teamup.response.EventResponse;
 import com.kingbbode.chatbot.autoconfigure.messenger.teamup.response.FileUploadResponse;
 import com.kingbbode.chatbot.autoconfigure.messenger.teamup.response.MessageResponse;
+import com.kingbbode.chatbot.autoconfigure.messenger.teamup.response.RoomCreateResponse;
 import com.kingbbode.chatbot.autoconfigure.messenger.teamup.templates.template.EdgeTemplate;
 import com.kingbbode.chatbot.autoconfigure.messenger.teamup.templates.template.FileTemplate;
 import org.slf4j.Logger;
@@ -39,6 +40,10 @@ public class MessageService {
 
     public void sendMessage(BrainResult result) {
         edgeTemplate.sendMessage(result.getMessage(), result.getRoom());
+    }
+    
+    public RoomCreateResponse openRoom(BrainResult result) {
+        return edgeTemplate.openRoom(result.getMessage());
     }
 
     public void sendEmoticon(BrainResult result) {
