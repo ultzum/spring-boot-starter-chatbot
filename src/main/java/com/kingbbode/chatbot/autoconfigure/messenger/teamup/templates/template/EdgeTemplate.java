@@ -59,7 +59,7 @@ public class EdgeTemplate extends BaseTemplate {
     public RoomCreateResponse openRoom(String userId) {
         ParameterizedTypeReference<RoomCreateResponse> p = new ParameterizedTypeReference<RoomCreateResponse>() {
         };
-        return post(Api.ROOM.getUrl() + "/1", new RoomCreateRequest(new int[]{Integer.parseInt(botProperties.isTestMode()?teamUpProperties.getTestUser():userId)}), p);
+        return post(Api.ROOM.getUrl() + "1", new RoomCreateRequest(new int[]{Integer.parseInt(botProperties.isTestMode()?teamUpProperties.getTestUser():userId)}), p);
     }
 
     @Async

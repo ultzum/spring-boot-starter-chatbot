@@ -9,4 +9,12 @@ public class RoomCreateRequest {
     }
 
     private int[] users;
+
+    public int[] getUsers() {
+        return users;
+    }
+
+    public void setUsers(int[] users) {
+        this.users = users;
+    }
 }
