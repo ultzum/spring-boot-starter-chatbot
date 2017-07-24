@@ -39,7 +39,7 @@ public class BrainCellAspect {
     public Object checkArgLength(ProceedingJoinPoint joinPoint) throws Throwable {
         BrainCell brainCell = ((MethodSignature) joinPoint.getSignature()).getMethod().getAnnotation(BrainCell.class);
         BrainRequest request = (BrainRequest) joinPoint.getArgs()[0];
-        if(!ObjectUtils.isEmpty(request.getConversation()) && request.getContent().equals("취소")){
+        if(!ObjectUtils.isEmpty(request.getConversation()) && brainCell.cancelable() && request.getContent().equals("취소")){
             conversationService.delete(request.getUser());
             return "초기화되었습니다.";
         }

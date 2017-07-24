@@ -21,5 +21,6 @@ public @interface BrainCell {
     String explain() default "";
     String example() default "";
     String function();
+    boolean cancelable() default true;
     BrainResponseType type() default BrainResponseType.MESSAGE;
 }
