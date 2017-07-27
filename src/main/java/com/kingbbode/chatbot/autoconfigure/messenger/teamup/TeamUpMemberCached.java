@@ -14,18 +14,17 @@ public class TeamUpMemberCached {
     
     public void updateMember(OrganigrammeResponse organigramme){
         Map<Long, String> tmpMembers = new HashMap<>();
-        organigramme.getDepartment().stream()
-                .filter(department -> department.getIndex() == 119)
+        organigramme.getDepartment()
                 .forEach(department -> findUsers(department, tmpMembers));
         members = tmpMembers;
     }
     
     private void findUsers(OrganigrammeResponse.Department department, Map<Long, String> tmpMembers){
-        department.getUsers().stream().forEach(user -> user.takeInfo(tmpMembers));
+        department.getUsers().forEach(user -> user.takeInfo(tmpMembers));
         if(department.getDepartment() == null){
             return;
         }
-        department.getDepartment().stream().forEach(department1 -> findUsers(department1, tmpMembers));
+        department.getDepartment().forEach(department1 -> findUsers(department1, tmpMembers));
     }
     
     public String getMemberName(Long id){
