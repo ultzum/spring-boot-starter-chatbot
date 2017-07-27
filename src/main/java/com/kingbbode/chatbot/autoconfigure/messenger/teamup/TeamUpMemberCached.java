@@ -20,6 +20,9 @@ public class TeamUpMemberCached {
     }
     
     private void findUsers(OrganigrammeResponse.Department department, Map<Long, String> tmpMembers){
+        if(department == null || department.getUsers() == null){
+            return;
+        }
         department.getUsers().forEach(user -> user.takeInfo(tmpMembers));
         if(department.getDepartment() == null){
             return;
