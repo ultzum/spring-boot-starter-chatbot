@@ -20,14 +20,15 @@ public class TeamUpMemberCached {
     }
     
     private void findUsers(OrganigrammeResponse.Department department, Map<Long, String> tmpMembers){
-        if(department == null || department.getUsers() == null){
+        if(department == null){
             return;
         }
-        department.getUsers().forEach(user -> user.takeInfo(tmpMembers));
-        if(department.getDepartment() == null){
-            return;
+        if(department.getUsers() != null) {
+            department.getUsers().forEach(user -> user.takeInfo(tmpMembers));
         }
-        department.getDepartment().forEach(department1 -> findUsers(department1, tmpMembers));
+        if(department.getDepartment() != null){
+            department.getDepartment().forEach(department1 -> findUsers(department1, tmpMembers));
+        }
     }
     
     public String getMemberName(Long id){
