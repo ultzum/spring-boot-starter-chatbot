@@ -25,7 +25,7 @@ public class TeamUpMemberService implements MemberService {
     @Override
     public void update(){
         OrganigrammeResponse response = authTemplate.readOrganigramme();
-        if(response == null){
+        if(response == null || response.getDepartment() == null){
             return;
         }
         memberCached.updateMember(response);
