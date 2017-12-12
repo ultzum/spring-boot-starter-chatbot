@@ -68,6 +68,7 @@
 
 ```java
 # CHAT-BOT
+chatbot.name = default
 chatbot.basePackage = com.kingbbode.example
 chatbot.enabled = true
 chatbot.enableBase = true
@@ -102,6 +103,7 @@ chatbot.teamup.bot[n] = {bot user id}
 
 **Core**
 
+- chatbot.name : chatbot 이름(redis key의 prefix가 됨)
 - chatbot.basePackage : Root Package 를 지정 - default ""
 - chatbot.enabled : {true or false} 챗봇 사용 여부 - default false
 - chatbot.enableBase = {true or false} Base Brain 사용 여부(base Brain 에는 기능 목록을 출력하는 기능이 작성되어 있음) - default true
