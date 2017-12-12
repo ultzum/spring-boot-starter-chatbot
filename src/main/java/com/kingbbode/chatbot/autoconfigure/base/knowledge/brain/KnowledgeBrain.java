@@ -25,7 +25,7 @@ public class KnowledgeBrain {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @BrainCell(key = "학습", explain = "명령어 학습시키기", example = "#학습", function = "addKnowledge")
+    @BrainCell(key = "학습", explain = "명령어 학습시키기", function = "addKnowledge")
     public String addKnowledge(BrainRequest brainRequest) throws JsonProcessingException {
         return "학습시킬 명령어가 무엇인가요?";
     }
@@ -46,7 +46,7 @@ public class KnowledgeBrain {
                 }
             }
 
-    @BrainCell(key = "까묵", explain = "학습 시킨 명령어 지우기", example = "#까묵 명령어", function = "forgetKnowledge")
+    @BrainCell(key = "까묵", explain = "학습 시킨 명령어 지우기", example = "까묵 명령어", function = "forgetKnowledge")
     public String forgetKnowledge(BrainRequest brainRequest) {
         return "무엇을 까먹을까요?";
     }

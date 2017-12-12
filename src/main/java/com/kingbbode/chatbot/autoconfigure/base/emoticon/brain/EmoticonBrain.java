@@ -22,7 +22,7 @@ public class EmoticonBrain {
     @Autowired
     private EmoticonComponent emoticonComponent;
 
-    @BrainCell(key = "이모티콘", explain = "이모티콘 조회 및 등록", example = "#이모티콘", function = "emoticon")
+    @BrainCell(key = "이모티콘", explain = "이모티콘 조회 및 등록", function = "emoticon")
     public String emoticon(BrainRequest brainRequest){
         return "조회하려면 '조회'\n" + 
                 "등록하려면 '등록'\n" +

@@ -31,7 +31,7 @@ public class BaseBrain {
     @Autowired
     private StatComponent statComponent;
 
-    @BrainCell(key = "기능", explain = "기능 목록 출력", example = "#기능", function = "function")
+    @BrainCell(key = "기능", explain = "기능 목록 출력", function = "function")
     public String explain(BrainRequest brainRequest) {
         return  "**** 기능 목록 **** \n" +
                 BrainUtil.explainDetail(brainFactory.findBrainCellByType(CommonBrainCell.class)) +
@@ -43,17 +43,17 @@ public class BaseBrain {
                 BrainUtil.explainForKnowledge(knowledgeComponent.getCommands());
     }
        
-    @BrainCell(key = "고유정보", explain = "고유 정보 추출", example = "#팀업고유정보", function = "teamup")
+    @BrainCell(key = "고유정보", explain = "고유 정보 추출",function = "teamup")
     public String teamupId(BrainRequest brainRequest){
         return brainRequest.toString();
     }
     
-    @BrainCell(key = "나가", explain = "쫓아내기", example = "#나가", function = "getout", type = BrainResponseType.OUT)
+    @BrainCell(key = "나가", explain = "쫓아내기", function = "getout", type = BrainResponseType.OUT)
     public String outRoom(BrainRequest brainRequest) {
         return "바이바이~";
     }
     
-    @BrainCell(key = "울트론통계", explain = "뭘 많이 쓰는지..", example = "#울트론통계", function = "statstat")
+    @BrainCell(key = "기능통계", explain = "뭘 많이 쓰는지..", function = "statstat")
     public String getStat(BrainRequest brainRequest) {
         return statComponent.toString();
     }

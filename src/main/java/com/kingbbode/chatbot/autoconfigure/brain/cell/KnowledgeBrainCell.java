@@ -24,7 +24,7 @@ public class KnowledgeBrainCell extends AbstractBrainCell {
     }
     
     @Override
-    public BrainResult execute(BrainRequest brainRequest) throws InvocationTargetException, IllegalAccessException {
+    public BrainResult execute(BrainRequest brainRequest) {
         List<String> results = knowledgeComponent.get(brainRequest.getContent());
         if(results == null){
             return BrainResult.NONE;

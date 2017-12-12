@@ -1,30 +1,27 @@
 package com.kingbbode.chatbot.autoconfigure.common.properties;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * Created by YG on 2016-10-13.
  */
+@Getter
+@Setter
 public class BotProperties {
-    private String prefix;
+    private String name;
+    private String commandPrefix;
+    private String emoticonPrefix;
     private boolean testMode;
 
-    public BotProperties(String prefix, boolean testMode) {
-        this.prefix = prefix;
+    public BotProperties(String name, String commandPrefix, String emoticonPrefix, boolean testMode) {
+        this.name = name;
+        this.commandPrefix = commandPrefix;
+        this.emoticonPrefix = emoticonPrefix;
         this.testMode = testMode;
     }
-
-    public String getPrefix() {
-        return prefix;
-    }
-
-    public void setPrefix(String prefix) {
-        this.prefix = prefix;
-    }
-
+    
     public boolean isTestMode() {
         return testMode;
-    }
-
-    public void setTestMode(boolean testMode) {
-        this.testMode = testMode;
     }
 }

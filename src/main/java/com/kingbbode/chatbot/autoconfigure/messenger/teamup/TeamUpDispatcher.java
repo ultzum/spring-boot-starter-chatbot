@@ -1,5 +1,6 @@
 package com.kingbbode.chatbot.autoconfigure.messenger.teamup;
 
+import com.kingbbode.chatbot.autoconfigure.TeamUpProperties;
 import com.kingbbode.chatbot.autoconfigure.base.emoticon.component.EmoticonComponent;
 import com.kingbbode.chatbot.autoconfigure.brain.DispatcherBrain;
 import com.kingbbode.chatbot.autoconfigure.common.enums.BrainResponseType;
@@ -28,7 +29,6 @@ public class TeamUpDispatcher implements Dispatcher<EventResponse.Event> {
     
     private static final String EVENT_MESSAGE = "chat.message";
     private static final String EVENT_JOIN = "chat.join";
-    private static final String ULTRON_USER_ID = "10849";
     private static final int MESSAGE_TYPE = 1;
     private static final int FILE_TYPE = 2;
 
@@ -43,11 +43,14 @@ public class TeamUpDispatcher implements Dispatcher<EventResponse.Event> {
     
     @Autowired
     private DispatcherBrain dispatcherBrain;
+    
+    @Autowired
+    private TeamUpProperties teamUpProperties;
 
     @Override
     public void dispatch(EventResponse.Event event) {
         if (EVENT_MESSAGE.equals(event.getType())) {
-            if (!event.getChat().getUser().equals(ULTRON_USER_ID)) {
+            if (!teamUpProperties.getBot().contains(event.getChat().getUser())) {
                 classification(event);
             }
         } else if (EVENT_JOIN.equals(event.getType())) {

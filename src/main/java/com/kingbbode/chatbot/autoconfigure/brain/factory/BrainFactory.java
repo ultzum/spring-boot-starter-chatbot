@@ -171,7 +171,7 @@ public class BrainFactory {
             if (method.isAnnotationPresent(BrainCell.class)) {
                 BrainCell brainCell = method.getAnnotation(BrainCell.class);
                 if("".equals(brainCell.parent())) {
-                    command.put(botProperties.getPrefix() + brainCell.key(), brainCell.function());
+                    command.put(botProperties.getCommandPrefix() + brainCell.key(), brainCell.function());
                 }else{
                     if(!childCommand.containsKey(brainCell.parent())){
                         childCommand.put(brainCell.parent(), new HashMap<>());
@@ -196,7 +196,7 @@ public class BrainFactory {
         return (T)(
                 (
                     chatbotProperties.isEnableEmoticon() && 
-                    command.startsWith("@") && 
+                    command.startsWith(botProperties.getEmoticonPrefix()) && 
                     emoticon.contains(command.substring(1, command.length()))
                 )? 
                 emoticonBrainCell : 

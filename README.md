@@ -73,7 +73,7 @@ chatbot.enabled = true
 chatbot.enableBase = true
 chatbot.enableEmoticon = true
 chatbot.enableKnowledge = true
-#Redis
+# Redis
 chatbot.hostName = localhost
 chatbot.port = 6879
 chatbot.timeout = 0
@@ -83,6 +83,9 @@ chatbot.useSsl = false
 chatbot.dbIndex = 0
 chatbot.clientName = {clientName}
 chatbot.convertPipelineAndTxResults = true
+# Command
+chatbot.commandPrefix = #
+chatbot.emoticonPrefix = @
 
 # TEAMUP
 chatbot.teamup.enabled = true
@@ -92,6 +95,9 @@ chatbot.teamup.clientId = {clientId}
 chatbot.teamup.clientSecret = {clientSecret}
 chatbot.teamup.testRoom = {DEV 모드 테스트 방 번호}
 chatbot.teamup.testFeed = {DEV 모드 테스트 피드 번호}
+chatbot.teamup.bot[0] = {bot user id}
+..
+chatbot.teamup.bot[n] = {bot user id}
 ```
 
 **Core**
@@ -101,6 +107,8 @@ chatbot.teamup.testFeed = {DEV 모드 테스트 피드 번호}
 - chatbot.enableBase = {true or false} Base Brain 사용 여부(base Brain 에는 기능 목록을 출력하는 기능이 작성되어 있음) - default true
 - chatbot.enableEmoticon = {true or false} Emoticon Brain 사용 여부(emoticon Brain 에는 @를 prefix로 받아 이모티콘을 처리하기 위한 기능이 작성되어 있음, 이모티콘을 저장하는 형태는 구현 프로젝트에서 작성해야 함) - default false
 - chatbot.enableKnowledge = {true or false} Knowledge Brain 사용 여부( knowledge Brain 에는 학습 기능이 작성되어 있음) - default false
+- chatbot.commandPrefix = 명령어의 접두어
+- chatbot.emoticonPrefix = 이모티콘 접두어
 
 **Redis**
 
@@ -125,7 +133,7 @@ chatbot.teamup.testFeed = {DEV 모드 테스트 피드 번호}
 - chatbot.teamup.clientSecret = {clientSecret}
 - chatbot.teamup.testRoom = {DEV 모드 테스트 방 번호}
 - chatbot.teamup.testFeed = {DEV 모드 테스트 피드 번호} 
-
+- chatbot.teamup.bot[0-N] = {메시지를 무시할 대상}
 
 ### Example Project
 

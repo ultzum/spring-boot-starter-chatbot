@@ -1,6 +1,7 @@
 package com.kingbbode.chatbot.autoconfigure.base.emoticon.component;
 
 import com.kingbbode.chatbot.autoconfigure.base.stat.StatComponent;
+import com.kingbbode.chatbot.autoconfigure.common.properties.BotProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.HashOperations;
 
@@ -20,15 +21,20 @@ public class EmoticonComponent {
     
     @Autowired
     private StatComponent statComponent;
-
-    private static final String REDIS_KEY_EMOTICON = "/ultron/emoticon";
     
+    @Autowired
+    private BotProperties botProperties;
+
+    private static final String REDIS_KEY_EMOTICON = ":emoticon";
+    
+    private String key;
     private Map<String, String> emoticons;
 
     @PostConstruct
-    public void init() throws IOException {
+    public void init() {
+        this.key = botProperties.getName() + REDIS_KEY_EMOTICON;
         Map<String, String> map = new ConcurrentHashMap<>();
-        Map<String, String> entries = hashOperations.entries(REDIS_KEY_EMOTICON);
+        Map<String, String> entries = hashOperations.entries(this.key);
         for(Map.Entry<String, String> entry : entries.entrySet()){
             map.put(entry.getKey(), entry.getValue());
         }
@@ -48,16 +54,16 @@ public class EmoticonComponent {
     }
     
     public void put(String key, String value){
-        hashOperations.put(REDIS_KEY_EMOTICON, "@" + key, value);
-        emoticons.put("@" + key, value);
+        hashOperations.put(this.key, botProperties.getEmoticonPrefix() + key, value);
+        emoticons.put(botProperties.getEmoticonPrefix() + key, value);
     }
     
     public boolean contains(String key){
-        return emoticons.containsKey("@" + key);
+        return emoticons.containsKey(botProperties.getEmoticonPrefix() + key);
     }
 
     public void remove(String key) {
-        hashOperations.delete(REDIS_KEY_EMOTICON, "@" + key);
-        emoticons.remove("@" + key);
+        hashOperations.delete(this.key, botProperties.getEmoticonPrefix() + key);
+        emoticons.remove(botProperties.getEmoticonPrefix() + key);
     }
 }

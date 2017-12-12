@@ -40,7 +40,7 @@ public class CommonBrainCell extends AbstractBrainCell{
     }
 
     @Override
-    public BrainResult execute(BrainRequest brainRequest) throws InvocationTargetException, IllegalAccessException {
+    public BrainResult execute(BrainRequest brainRequest) {
         if (!inject()) {
             return BrainResult.Builder.FAILED.room(brainRequest.getRoom()).build();
         }

@@ -17,7 +17,7 @@ public abstract class AbstractBrainCell implements BrainCell {
 
     public static AbstractBrainCell NOT_FOUND_BRAIN_CELL = new AbstractBrainCell() {
         @Override
-        public BrainResult execute(BrainRequest brainRequest) throws InvocationTargetException, IllegalAccessException {
+        public BrainResult execute(BrainRequest brainRequest) {
             return BrainResult.NONE;
         }
 

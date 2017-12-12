@@ -34,14 +34,16 @@ public class KnowledgeComponent {
     @Autowired
     private StatComponent statComponent;
 
-    private static final String REDIS_KEY_KNOWLEDGE = "/ultron/knowledge";
+    private static final String REDIS_KEY_KNOWLEDGE = ":knowledge";
 
+    private String key;
     private Map<String, List<String>> knowledge;
     
     @PostConstruct
     public void init() throws IOException {
+        this.key = botProperties.getName() + REDIS_KEY_KNOWLEDGE;
         Map<String, List<String>> map = new ConcurrentHashMap<>();
-        Map<String, String> entries = hashOperations.entries(REDIS_KEY_KNOWLEDGE);
+        Map<String, String> entries = hashOperations.entries(this.key);
         for(Map.Entry<String, String> entry : entries.entrySet()){
             map.put(entry.getKey(), objectMapper.readValue(entry.getValue(), new TypeReference<List<String>>() {
             }));
@@ -66,7 +68,7 @@ public class KnowledgeComponent {
     }
 
     public String addKnowledge(String command, String content) throws JsonProcessingException {
-        if (content.startsWith(botProperties.getPrefix())) {
+        if (content.startsWith(botProperties.getCommandPrefix())) {
             return "#로 시작하는 내용은 암기할 수 없습니다";
         }
 
@@ -76,7 +78,7 @@ public class KnowledgeComponent {
                 return command + " 명령어에 습득할 수 있는 머리가 꽉 차서 못하겠습니다";
             }
             list.add(content);
-            hashOperations.put(REDIS_KEY_KNOWLEDGE, command, objectMapper.writeValueAsString(list));
+            hashOperations.put(this.key, command, objectMapper.writeValueAsString(list));
             return command + " 명령어에 지식을 하나 더 습득했습니다";
         } else {
             if (knowledge.size() > 10000) {
@@ -85,7 +87,7 @@ public class KnowledgeComponent {
             List<String> list = new ArrayList<>();
             list.add(content);
             knowledge.put(command, list);
-            hashOperations.put(REDIS_KEY_KNOWLEDGE, command, objectMapper.writeValueAsString(list));
+            hashOperations.put(this.key, command, objectMapper.writeValueAsString(list));
             return "새로운 지식을 습득했습니다. \n 사용법 : " + command;
         }
     }
@@ -93,7 +95,7 @@ public class KnowledgeComponent {
     public String forgetKnowledge(String command) {
         if (knowledge.containsKey(command)) {
             knowledge.remove(command);
-            hashOperations.delete(REDIS_KEY_KNOWLEDGE, command);
+            hashOperations.delete(this.key, command);
             return command + "를 까먹었습니다";
         } else {
             return "그런건 원래 모릅니다";

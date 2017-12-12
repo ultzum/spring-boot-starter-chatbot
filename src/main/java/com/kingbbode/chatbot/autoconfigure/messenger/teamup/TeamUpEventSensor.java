@@ -53,7 +53,7 @@ public class TeamUpEventSensor {
                 ArrayList<EventResponse.Event> events = eventResponse.getEvents();
                 if (events != null && !events.isEmpty()) {
                     events.forEach(event -> this.eventQueue.offer(
-                            new Event<EventResponse.Event>(teamUpDispatcher, event)
+                            new Event<>(teamUpDispatcher, event)
                     ));
                 }
             }

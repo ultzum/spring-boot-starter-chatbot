@@ -11,6 +11,7 @@ import redis.clients.jedis.Protocol;
 @ConfigurationProperties(prefix = "chatbot")
 @Data
 public class ChatbotProperties {
+    private String name = "default";
     private String basePackage = "";
     private boolean enableBase = true;
     private boolean enableEmoticon = false;
@@ -25,4 +26,8 @@ public class ChatbotProperties {
     private int dbIndex = 0;
     private String clientName;
     private boolean convertPipelineAndTxResults = true;
+
+    private String commandPrefix = "#";
+    private String emoticonPrefix = "@";
 }
+

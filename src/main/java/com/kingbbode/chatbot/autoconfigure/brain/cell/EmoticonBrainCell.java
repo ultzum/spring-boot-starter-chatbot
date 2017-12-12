@@ -13,18 +13,13 @@ import java.lang.reflect.InvocationTargetException;
 public class EmoticonBrainCell extends AbstractBrainCell{
     
     private EmoticonComponent emoticonComponent;
-/*
-    public EmoticonBrainCell(String emoticon) {
-        this.builder = BrainResult.builder()
-                .message(emoticon);
-    }*/
 
     public EmoticonBrainCell(EmoticonComponent emoticonComponent) {
         this.emoticonComponent = emoticonComponent;
     }
 
     @Override
-    public BrainResult execute(BrainRequest brainRequest) throws InvocationTargetException, IllegalAccessException {
+    public BrainResult execute(BrainRequest brainRequest) {
         String result = emoticonComponent.get(brainRequest.getContent());
         if(result == null){
             return BrainResult.NONE;

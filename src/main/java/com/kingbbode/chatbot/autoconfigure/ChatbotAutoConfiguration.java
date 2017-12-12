@@ -52,8 +52,6 @@ public class ChatbotAutoConfiguration {
     public BrainFactory brainFactory(){
         return new BrainFactory();
     }
-    
-    
 
     @Bean
     @ConditionalOnMissingBean
@@ -178,13 +176,13 @@ public class ChatbotAutoConfiguration {
     @Bean
     @Profile({"bot"})
     public BotProperties realBotConfig(){
-        return new BotProperties("#", false);
+        return new BotProperties(chatbotProperties.getName(), chatbotProperties.getCommandPrefix(), chatbotProperties.getEmoticonPrefix(), false);
     }
 
     @Bean
     @Profile({"dev"})
     public BotProperties devBotConfig(){
-        return new BotProperties("#@", true);
+        return new BotProperties(chatbotProperties.getName(),"#" +  chatbotProperties.getCommandPrefix(), chatbotProperties.getEmoticonPrefix(), true);
     }
     
     @Bean
@@ -198,6 +196,4 @@ public class ChatbotAutoConfiguration {
     public BrainCellAspect brainCellAspect(){
         return new BrainCellAspect();
     }
-    
-    
 }
