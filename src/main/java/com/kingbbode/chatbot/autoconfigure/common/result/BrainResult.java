@@ -76,7 +76,7 @@ public class BrainResult {
         public static Builder FAILED = new Builder()
                 .message("해당 기능은 장애 상태 입니다");
         public static Builder GREETING = new Builder()
-                .message("안녕하세요. 포털개발팀 반려봇 울트론입니다!. \n '#기능'을 참고하세요");
+                .message("안녕하세요.\n '기능'을 참고하세요");
     }
 
 }

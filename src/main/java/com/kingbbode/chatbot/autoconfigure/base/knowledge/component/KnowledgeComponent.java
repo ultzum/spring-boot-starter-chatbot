@@ -69,7 +69,7 @@ public class KnowledgeComponent {
 
     public String addKnowledge(String command, String content) throws JsonProcessingException {
         if (content.startsWith(botProperties.getCommandPrefix())) {
-            return "#로 시작하는 내용은 암기할 수 없습니다";
+            return botProperties.getCommandPrefix() + "로 시작하는 내용은 암기할 수 없습니다";
         }
 
         if (knowledge.containsKey(command)) {
