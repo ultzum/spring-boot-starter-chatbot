@@ -1,8 +1,10 @@
+@Deprecated https://github.com/ultzum/spring-boot-starter-chatbot
+
+https://github.com/kingbbode/spring-boot-chatbot 로 이전
+
 # Kingbbode Chat Bot Framework
 
 *최초 작성일 : 2017-02-07*
-
-**https://github.com/kingbbode/chatbot-framework 에서 이전되었음.**
 
 *Document 는 최하단 작성*
 
